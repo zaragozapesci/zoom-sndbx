@@ -1,0 +1,80 @@
+openapi: 3.0.0
+info:
+  title: Zoom Sandbox
+  version: '1.0'
+  contact:
+    name: AZP
+  description: RESTful API with NodeJS and Express
+servers:
+  - url: 'http://localhost:3000'
+    description: localhost dev
+paths:
+  /api/courses:
+    get:
+      summary: Get courses list
+      tags:
+        - courses
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: number
+                    name:
+                      type: string
+      operationId: get-api-courses
+      description: Get all available courses
+  '/api/courses/{id}':
+    get:
+      summary: Get course details
+      tags:
+        - courses
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                  name:
+                    type: string
+        '404':
+          description: Not Found
+          content:
+            text/html:
+              schema:
+                type: string
+      operationId: get-api-courses
+      description: Get details of a particular course
+    parameters:
+      - schema:
+          type: number
+        name: id
+        in: path
+        required: true
+        description: Course ID
+components:
+  schemas:
+    Course:
+      title: Course
+      type: object
+      description: Course model
+      x-tags:
+        - courses
+        - model
+      properties:
+        id:
+          type: number
+        name:
+          type: string
+      x-examples:
+        example-1: { id: 1, name: 'Course 1' }
