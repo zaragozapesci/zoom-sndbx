@@ -53,6 +53,9 @@ paths:
             text/html:
               schema:
                 type: string
+              examples:
+                example-1:
+                  'The course with ID ${courseId} was not found'
       operationId: get-api-courses
       description: Get details of a particular course
     parameters:
@@ -77,4 +80,6 @@ components:
         name:
           type: string
       x-examples:
-        example-1: { id: 1, name: 'Course 1' }
+        example-1:
+          id: 1
+          name: Course 1
