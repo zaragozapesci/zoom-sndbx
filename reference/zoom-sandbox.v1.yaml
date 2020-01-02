@@ -83,11 +83,6 @@ components:
         example-1:
           id: 1
           name: Course 1
-      properties:
-        id:
-          type: number
-        name:
-          type: string
       required:
         - id
         - name
